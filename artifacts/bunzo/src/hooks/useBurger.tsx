@@ -6,6 +6,7 @@ import { toast } from "@/hooks/use-toast";
 export const BURGER_QUERY_KEYS = {
   all: ["burgers"] as const,
   detail: (id: number) => ["burgers", id] as const,
+  bySlug: (slug: string) => ["burgers", "slug", slug] as const,
 };
 
 const useBurger = () => {

@@ -1,7 +1,6 @@
 import SocialMediaBox from "./SocialMediaBox";
 import bunzo_logo from "../assets/bunzo_logo.svg";
 import { NavLink } from "react-router-dom";
-import useAOS from "../hooks/useAOS";
 import { 
   SparklesIcon, 
   HomeModernIcon, 
@@ -15,7 +14,6 @@ import {
 
 export default function Footer() {
   const currentYear: number = new Date().getFullYear();
-  useAOS();
 
   return (
     <footer className="flex flex-col justify-center items-center w-full bg-gradient-to-b from-gray-900 to-black text-white pt-12 pb-0">

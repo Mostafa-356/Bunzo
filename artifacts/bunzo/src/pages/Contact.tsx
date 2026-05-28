@@ -109,7 +109,7 @@ export default function Contact() {
                       options={enquiryTypeOptions}
                       selected={selectedEnquiryType || enquiryTypeOptions[0]}
                       onChange={setSelectedEnquiryType}
-                      buttonStyle="border border-gray-300 bg-transparent shadow:sm focus:border-emerald-500 focus:ring-emerald-500"
+                      buttonStyle="border-gray-200 bg-white/90"
                       optionStyle="w-full"
                       labelStyle="text-xs font-normal text-gray-700 uppercase"
                       animation="fade-left"
@@ -144,7 +144,7 @@ export default function Contact() {
         <div className="w-[95%] sm:w-[90%] mx-auto">
           <Heading text="Visit Our Locations" customClass="text-center mb-12" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
+            <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" data-aos="fade-up">
               <h3 className="text-lg font-semibold text-emerald-600 mb-4">Downtown Cairo</h3>
               <p className="text-gray-600 mb-2 flex items-center gap-2">
                 <MapPinIcon className="size-4 text-emerald-500" /> Tahrir Square Area
@@ -158,7 +158,7 @@ export default function Contact() {
               <p className="text-sm text-gray-500">The heart of Egyptian street food culture</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
               <h3 className="text-lg font-semibold text-emerald-600 mb-4">Zamalek</h3>
               <p className="text-gray-600 mb-2 flex items-center gap-2">
                 <MapPinIcon className="size-4 text-emerald-500" /> 26th July Street
@@ -172,7 +172,7 @@ export default function Contact() {
               <p className="text-sm text-gray-500">Modern dining with Nile views</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="400">
+            <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
               <h3 className="text-lg font-semibold text-emerald-600 mb-4">New Capital</h3>
               <p className="text-gray-600 mb-2 flex items-center gap-2">
                 <MapPinIcon className="size-4 text-emerald-500" /> Central Business District

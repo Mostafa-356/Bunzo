@@ -6,6 +6,7 @@ import { toast } from "@/hooks/use-toast";
 export const BLOG_QUERY_KEYS = {
   all: ["blogs"] as const,
   detail: (id: number) => ["blogs", id] as const,
+  bySlug: (slug: string) => ["blogs", "slug", slug] as const,
 };
 
 const useBlog = () => {

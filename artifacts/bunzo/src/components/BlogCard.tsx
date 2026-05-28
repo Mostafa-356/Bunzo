@@ -3,6 +3,7 @@ import { BlogCardProps } from "../types/blog";
 import { Dropdown } from "./ui";
 import { formatDate } from "../utils/utilFunctions";
 import { useGlobalContext } from "../GlobalContext";
+import { slugify } from "../utils/slug";
 
 export default function BlogCard({
   id,
@@ -23,7 +24,7 @@ export default function BlogCard({
       className="relative flex flex-col sm:flex-row gap-4 items-center rounded-3xl p-3 sm:p-4 bg-white border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
       data-aos={animation}
     >
-      <Link to={`/blog/${id}`} className="flex-shrink-0">
+      <Link to={`/blog/${slugify(title)}`} className="flex-shrink-0">
         <figure className="relative h-fit size-60 sm:size-auto sm:w-36 md:w-40 lg:w-44 rounded-2xl overflow-hidden bg-gray-100">
           <img
             src={image}
@@ -35,7 +36,7 @@ export default function BlogCard({
       <div className="flex flex-col justify-between items-start gap-3 w-full h-full py-1">
         <div className="flex flex-col gap-2 justify-center items-center sm:justify-start sm:items-start w-full">
           <Link
-            to={`/blog/${id}`}
+            to={`/blog/${slugify(title)}`}
             className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 hover:text-emerald-600 transition-colors leading-snug"
           >
             {title}

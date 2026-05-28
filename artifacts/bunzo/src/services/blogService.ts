@@ -1,5 +1,6 @@
 import { blogPosts, BlogPost } from '../data/blog';
 import { BlogCardProps } from '../types/blog';
+import { slugify } from '../utils/slug';
 
 export class BlogService {
   // Convert BlogPost to BlogCardProps format
@@ -30,6 +31,13 @@ export class BlogService {
   static async getBlogById(id: number): Promise<BlogCardProps | null> {
     await this.simulateDelay();
     const post = blogPosts.find(p => p.id === id);
+    return post ? this.convertBlogPostToBlogCard(post) : null;
+  }
+
+  // Get blog post by slug (derived from title)
+  static async getBlogBySlug(slug: string): Promise<BlogCardProps | null> {
+    await this.simulateDelay();
+    const post = blogPosts.find(p => slugify(p.title) === slug);
     return post ? this.convertBlogPostToBlogCard(post) : null;
   }
 

@@ -31,13 +31,13 @@ export const FormInput = ({
           placeholder={placeholder}
           value={value}
           required={required}
-          className={`w-full rounded-md shadow-sm py-2 px-3 lg:py-4 lg:px-5 text-sm border border-gray-300 bg-transparent focus:border-emerald-500 focus:ring-emerald-500 ${inputStyle}`}
+          className={`w-full rounded-xl bg-white/90 py-3 px-4 lg:py-3.5 lg:px-5 text-sm text-gray-800 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400 transition-all duration-200 shadow-sm resize-none ${inputStyle}`}
         ></textarea>
       ) : (
         <input
           type={type}
           placeholder={placeholder}
-          className={`w-full rounded-md shadow-sm py-2 px-3 lg:py-4 lg:px-5 text-sm border border-gray-300 bg-transparent focus:border-emerald-500 focus:ring-emerald-500 ${inputStyle}`}
+          className={`w-full rounded-xl bg-white/90 py-3 px-4 lg:py-3.5 lg:px-5 text-sm text-gray-800 border border-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400 transition-all duration-200 shadow-sm ${inputStyle}`}
           onChange={customFunction}
           value={value}
           name={name}

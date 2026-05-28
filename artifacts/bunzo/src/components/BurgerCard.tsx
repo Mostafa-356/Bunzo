@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { BurgerCardType } from "../types/burger";
 import React from "react";
 import { useGlobalContext } from "../GlobalContext";
+import { slugify } from "../utils/slug";
 
 const Burger = React.memo(
   ({
@@ -37,7 +38,7 @@ const Burger = React.memo(
             >
               <img src={isFavorite ? heart_fill : heart_blank} alt="fav" className="w-4 h-4" />
             </div>
-            <Link to={`/burgers/${id}`} className="relative block">
+            <Link to={`/burgers/${slugify(name)}`} className="relative block">
               <img
                 src={image}
                 alt={name}
@@ -48,7 +49,7 @@ const Burger = React.memo(
 
           <div className="flex flex-col gap-2 px-1">
             <Link
-              to={`/burgers/${id}`}
+              to={`/burgers/${slugify(name)}`}
               className="text-lg font-semibold text-gray-900 hover:text-emerald-600 transition-colors leading-snug"
             >
               {name}

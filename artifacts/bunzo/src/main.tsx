@@ -49,12 +49,12 @@ createRoot(document.getElementById("root")!).render(
               <Routes>
                 <Route path="/" element={<AppPage />} />
                 <Route path="/burgers" element={<Burgers />} />
-                <Route path="/burgers/:id" element={<BurgerDetails />} />
+                <Route path="/burgers/:slug" element={<BurgerDetails />} />
                 <Route path="/menu" element={<Navigate to="/burgers" replace />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<BlogList />} />
-                <Route path="/blog/:id" element={<Blog />} />
+                <Route path="/blog/:slug" element={<Blog />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

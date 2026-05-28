@@ -4,6 +4,7 @@ import { BlogService } from "../services/blogService";
 import { BlogCardProps } from "../types/blog";
 import { BLOG_QUERY_KEYS } from "../hooks/useBlog";
 import { queryClient } from "../lib/queryClient";
+import { slugify } from "../utils/slug";
 import { BlogCardSkeleton, Heading, UserBox } from "../components/ui";
 import Newsletter from "../components/Newsletter";
 import BurgerShortList from "../components/BurgerShortList";
@@ -12,8 +13,7 @@ import SocialMediaBox from "../components/SocialMediaBox";
 import useAOS from "../hooks/useAOS";
 
 export default function Blog() {
-  const { id } = useParams<{ id: string }>();
-  const blogId = parseInt(id || "0");
+  const { slug } = useParams<{ slug: string }>();
 
   useAOS({ duration: 500, easing: "ease-in-out" });
 
@@ -22,14 +22,14 @@ export default function Blog() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: BLOG_QUERY_KEYS.detail(blogId),
-    queryFn: () => BlogService.getBlogById(blogId),
+    queryKey: BLOG_QUERY_KEYS.bySlug(slug || ""),
+    queryFn: () => BlogService.getBlogBySlug(slug || ""),
     initialData: () => {
       const all = queryClient.getQueryData<BlogCardProps[]>(BLOG_QUERY_KEYS.all);
-      return all?.find((b) => b.id === blogId);
+      return all?.find((b) => slugify(b.title) === slug) ?? undefined;
     },
     staleTime: 1000 * 60 * 5,
-    enabled: blogId > 0,
+    enabled: !!slug,
   });
 
   if (isLoading) return (

@@ -1,5 +1,6 @@
 import { egyptianBurgers, BurgerData } from '../data/burgers';
 import { BurgerType } from '../types/burger';
+import { slugify } from '../utils/slug';
 
 export class BurgerService {
   // Convert BurgerData to BurgerType format
@@ -32,6 +33,13 @@ export class BurgerService {
   static async getBurgerById(id: number): Promise<BurgerType | null> {
     await this.simulateDelay();
     const burger = egyptianBurgers.find(b => b.id === id);
+    return burger ? this.convertBurgerDataToBurgerType(burger) : null;
+  }
+
+  // Get burger by slug (derived from name)
+  static async getBurgerBySlug(slug: string): Promise<BurgerType | null> {
+    await this.simulateDelay();
+    const burger = egyptianBurgers.find(b => slugify(b.name) === slug);
     return burger ? this.convertBurgerDataToBurgerType(burger) : null;
   }
 

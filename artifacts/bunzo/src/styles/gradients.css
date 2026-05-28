@@ -1,34 +1,34 @@
 /* ── Bunzo Gradients ─────────────────────────────────────── */
 
 .bg-gradient-bunzo-light {
-  background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+  background: linear-gradient(145deg, #ecfdf5, #d1fae5);
 }
 .bg-gradient-bunzo-primary {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: linear-gradient(135deg, #059669, #047857);
 }
 .bg-gradient-bunzo-hero {
-  background: linear-gradient(135deg, #064e3b, #10b981);
+  background: linear-gradient(140deg, #022c22 0%, #064e3b 50%, #065f46 100%);
 }
 .bg-gradient-bunzo-card {
-  background: linear-gradient(160deg, #ffffff, #f0fdf4);
+  background: linear-gradient(160deg, #ffffff 0%, #f0fdf4 60%, #ecfdf5 100%);
 }
 .bg-gradient-bunzo-contact {
-  background: linear-gradient(160deg, #f0fdf4, #dcfce7);
+  background: linear-gradient(160deg, #ecfdf5 0%, #d1fae5 60%, #a7f3d0 100%);
 }
 .bg-gradient-bunzo-green {
-  background: linear-gradient(160deg, #336F53, #1E4B3D);
+  background: linear-gradient(160deg, #065f46, #022c22);
 }
 .bg-gradient-bunzo-instagram {
-  background: linear-gradient(160deg, #ffffff, #ecfdf5 40%, #f0fdf4);
+  background: linear-gradient(160deg, #ffffff 0%, #f0fdf4 40%, #ecfdf5 100%);
 }
 
-/* Category card gradients */
-.bg-gradient-category-rice      { background: linear-gradient(160deg, #fff, #F7F8F4); }
-.bg-gradient-category-veggies   { background: linear-gradient(160deg, #fff, #EDFBEE); }
-.bg-gradient-category-beef      { background: linear-gradient(160deg, #fff, #FEF2F2); }
-.bg-gradient-category-cake      { background: linear-gradient(160deg, #fff, #FFFBEB); }
-.bg-gradient-category-bread     { background: linear-gradient(160deg, #fff, #F4F4F4); }
-.bg-gradient-category-chocolate { background: linear-gradient(160deg, #fff, #F5F5F5); }
+/* Category card gradients — richer accent */
+.bg-gradient-category-rice      { background: linear-gradient(160deg, #fff 0%, #f7f8f4 100%); }
+.bg-gradient-category-veggies   { background: linear-gradient(160deg, #fff 0%, #ecfdf5 100%); }
+.bg-gradient-category-beef      { background: linear-gradient(160deg, #fff 0%, #fff1f2 100%); }
+.bg-gradient-category-cake      { background: linear-gradient(160deg, #fff 0%, #fffbeb 100%); }
+.bg-gradient-category-bread     { background: linear-gradient(160deg, #fff 0%, #fafaf9 100%); }
+.bg-gradient-category-chocolate { background: linear-gradient(160deg, #fff 0%, #fdf6ec 100%); }
 
 /* Community background */
 .bg-community {

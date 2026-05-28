@@ -24,6 +24,8 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+  /* Prevents white flash below footer on overscroll — matches footer dark color */
+  background-color: #030712;
 }
 
 body {
@@ -32,6 +34,7 @@ body {
   padding: 0;
   overflow: visible;
   background-color: #fafafa;
+  min-height: 100%;
 }
 
 #root {

@@ -4,6 +4,7 @@ import { BurgerService } from "../services/burgerService";
 import { BurgerType } from "../types/burger";
 import { BURGER_QUERY_KEYS } from "../hooks/useBurger";
 import { queryClient } from "../lib/queryClient";
+import { slugify } from "../utils/slug";
 import {
   Heading,
   UserBox,
@@ -26,8 +27,7 @@ import BurgerSideList from "../components/BurgerSideList";
 import useAOS from "../hooks/useAOS";
 
 export default function BurgerDetails() {
-  const { id } = useParams<{ id: string }>();
-  const burgerId = parseInt(id || "0");
+  const { slug } = useParams<{ slug: string }>();
 
   useAOS({ duration: 500, easing: "ease-in-out" });
 
@@ -36,14 +36,14 @@ export default function BurgerDetails() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: BURGER_QUERY_KEYS.detail(burgerId),
-    queryFn: () => BurgerService.getBurgerById(burgerId),
+    queryKey: BURGER_QUERY_KEYS.bySlug(slug || ""),
+    queryFn: () => BurgerService.getBurgerBySlug(slug || ""),
     initialData: () => {
       const all = queryClient.getQueryData<BurgerType[]>(BURGER_QUERY_KEYS.all);
-      return all?.find((b) => b.id === burgerId);
+      return all?.find((b) => slugify(b.name) === slug) ?? undefined;
     },
     staleTime: 1000 * 60 * 5,
-    enabled: burgerId > 0,
+    enabled: !!slug,
   });
 
   if (isLoading) return (
