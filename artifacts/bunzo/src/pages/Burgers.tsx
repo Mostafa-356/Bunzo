@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Heading, LoadingSpinner, SubHeading } from "../components/ui";
+import { BurgerCardSkeleton, Button, Heading, SubHeading } from "../components/ui";
 import BurgerCard from "../components/BurgerCard";
 import Pagination from "../components/ui/Pagination";
 import { BurgerType } from "../types/burger";
@@ -167,7 +167,9 @@ export default function Burgers() {
           </div>
 
           {isLoading ? (
-            <LoadingSpinner />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
+              {Array.from({ length: 6 }).map((_, i) => <BurgerCardSkeleton key={i} />)}
+            </div>
           ) : error ? (
             <div className="text-center text-red-500">{error}</div>
           ) : currentBurgers.length > 0 ? (

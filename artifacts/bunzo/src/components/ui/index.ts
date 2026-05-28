@@ -9,3 +9,4 @@ export { Dropdown } from './Dropdown';
 export { LoadingSpinner } from './LoadingSpinner';
 export { FormInput } from './FormInput';
 export { OutputIcon } from './OutputIcon';
+export { Skeleton, BurgerCardSkeleton, BlogCardSkeleton } from './Skeleton';

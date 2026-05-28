@@ -2,7 +2,7 @@ import EditBurgerForm from "./EditBurger";
 import useBurger from "../hooks/useBurger";
 
 import { useState } from "react";
-import { Heading } from "./ui";
+import { BurgerCardSkeleton, Heading } from "./ui";
 import BurgerCard from "./BurgerCard";
 import { BurgerType } from "../types/burger";
 import useAOS from "../hooks/useAOS";
@@ -18,14 +18,12 @@ export default function BurgerShortList({
     deleteBurger,
     editBurger,
     burgerData,
+    isLoading,
     error,
     toggleFavorite,
   } = useBurger();
 
-  useAOS({
-    duration: 500,
-    easing: "ease-in-out",
-  });
+  useAOS({ duration: 500, easing: "ease-in-out" });
 
   function handleOpenEditForm(burger: BurgerType): void {
     setSelectedBurger(burger);
@@ -36,17 +34,21 @@ export default function BurgerShortList({
     setSelectedBurger(null);
   }
 
-
   return (
-    <section className="flex justify-center items-center mt-10">
-      <div className="w-[95%] sm:w-[90%] flex flex-col gap-5">
+    <section className="flex justify-center items-center mt-10 mb-10">
+      <div className="w-[95%] sm:w-[90%] flex flex-col gap-10">
         <Heading text={headingText} customClass="text-center" />
-        { error ? (
-          <div className="text-center text-red-500">{error}</div>
-        ) : burgerData.length > 0 ? (
-          <div className="flex justify-center items-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-0 mt-10">
-              {burgerData.slice(-4).map((burger: BurgerType) => (
+
+        {error && (
+          <p className="text-center text-red-500 text-sm">{error}</p>
+        )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+          {isLoading
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <BurgerCardSkeleton key={i} />
+              ))
+            : burgerData.slice(-4).map((burger: BurgerType) => (
                 <BurgerCard
                   key={burger.id}
                   id={burger.id}
@@ -63,10 +65,9 @@ export default function BurgerShortList({
                   }
                 />
               ))}
-            </div>
-          </div>
-        ) : null}
+        </div>
       </div>
+
       {showEditForm && (
         <EditBurgerForm
           handleForm={handleCloseEditForm}

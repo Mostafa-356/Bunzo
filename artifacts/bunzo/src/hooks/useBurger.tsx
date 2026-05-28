@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { BurgerService } from "../services/burgerService";
 import { BurgerType } from "../types/burger";
+import { toast } from "@/hooks/use-toast";
 
 export const BURGER_QUERY_KEYS = {
   all: ["burgers"] as const,
@@ -35,6 +36,10 @@ const useBurger = () => {
         ...old,
         newBurger,
       ]);
+      toast.success(`"${newBurger.name}" has been added to the menu.`, "Burger Added");
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try again.", "Failed to add burger");
     },
   });
 
@@ -56,6 +61,10 @@ const useBurger = () => {
       if (updated.id != null) {
         queryClient.setQueryData(BURGER_QUERY_KEYS.detail(updated.id), updated);
       }
+      toast.success(`"${updated.name}" has been updated.`, "Burger Updated");
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try again.", "Failed to update burger");
     },
   });
 
@@ -71,6 +80,10 @@ const useBurger = () => {
       if (id != null) {
         queryClient.removeQueries({ queryKey: BURGER_QUERY_KEYS.detail(id) });
       }
+      toast.success("The burger has been removed from the menu.", "Burger Deleted");
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try again.", "Failed to delete burger");
     },
   });
 

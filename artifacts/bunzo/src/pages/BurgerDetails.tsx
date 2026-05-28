@@ -8,7 +8,7 @@ import {
   Heading,
   UserBox,
   Badge,
-  LoadingSpinner,
+  BurgerCardSkeleton,
   OutputIcon,
 } from "../components/ui";
 
@@ -46,7 +46,13 @@ export default function BurgerDetails() {
     enabled: burgerId > 0,
   });
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return (
+    <div className="flex justify-center items-center mt-16 px-6">
+      <div className="w-[90%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl">
+        {Array.from({ length: 3 }).map((_, i) => <BurgerCardSkeleton key={i} />)}
+      </div>
+    </div>
+  );
 
   if (error) {
     return (

@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { BlogService } from "../services/blogService";
 import { BlogCardProps } from "../types/blog";
+import { toast } from "@/hooks/use-toast";
 
 export const BLOG_QUERY_KEYS = {
   all: ["blogs"] as const,
@@ -35,6 +36,10 @@ const useBlog = () => {
         ...old,
         newBlog,
       ]);
+      toast.success(`"${newBlog.title}" has been published.`, "Blog Post Added");
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try again.", "Failed to add post");
     },
   });
 
@@ -56,6 +61,10 @@ const useBlog = () => {
       if (updated.id != null) {
         queryClient.setQueryData(BLOG_QUERY_KEYS.detail(updated.id), updated);
       }
+      toast.success(`"${updated.title}" has been updated.`, "Blog Post Updated");
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try again.", "Failed to update post");
     },
   });
 
@@ -71,6 +80,10 @@ const useBlog = () => {
       if (id != null) {
         queryClient.removeQueries({ queryKey: BLOG_QUERY_KEYS.detail(id) });
       }
+      toast.success("The blog post has been removed.", "Blog Post Deleted");
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try again.", "Failed to delete post");
     },
   });
 

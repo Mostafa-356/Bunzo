@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Heading, LoadingSpinner, SubHeading } from "../components/ui";
+import { BlogCardSkeleton, Button, Heading, SubHeading } from "../components/ui";
 import Newsletter from "../components/Newsletter";
 import BlogCard from "../components/BlogCard";
 import Pagination from "../components/ui/Pagination";
@@ -80,7 +80,9 @@ export default function BlogList() {
           <div className="w-[95%] sm:w-[90%] grid lg:grid-cols-3 gap-6 lg:gap-8">
             <div className="flex flex-col gap-10 col-span-1 lg:col-span-2">
               {isLoading ? (
-                <LoadingSpinner />
+                <div className="flex flex-col gap-4">
+                  {Array.from({ length: 4 }).map((_, i) => <BlogCardSkeleton key={i} />)}
+                </div>
               ) : error ? (
                 <p className="text-red-500 text-center">{error}</p>
               ) : (

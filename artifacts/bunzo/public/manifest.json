@@ -1,0 +1,50 @@
+{
+  "name": "Bunzo - Egyptian Burger Restaurant",
+  "short_name": "Bunzo",
+  "description": "Authentic Egyptian street burgers — from Cairo kitchens to your table. Try the Pharaoh's Burger, Cairo Street Classic, and more.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "categories": ["food", "restaurant", "lifestyle"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/bz-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/opengraph.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Bunzo Egyptian Burgers Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Menu",
+      "short_name": "Menu",
+      "url": "/burgers",
+      "description": "Browse our full Egyptian burger menu"
+    },
+    {
+      "name": "Read Blog",
+      "short_name": "Blog",
+      "url": "/blog",
+      "description": "Egyptian food stories and recipes"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

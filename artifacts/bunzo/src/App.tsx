@@ -19,9 +19,9 @@ import instagram_white from "./assets/icons/instagram_white.svg";
 
 import {
   Button,
+  BurgerCardSkeleton,
   CategoryItem,
   Heading,
-  LoadingSpinner,
   StickyObject,
   SubHeading,
 } from "./components/ui";
@@ -121,9 +121,9 @@ function App() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
-            {isLoading && <LoadingSpinner />}
-            {error && <p className="text-red-500">{error}</p>}
-            {burgerData &&
+            {isLoading && Array.from({ length: 6 }).map((_, i) => <BurgerCardSkeleton key={i} />)}
+            {error && <p className="col-span-full text-center text-red-500">{error}</p>}
+            {!isLoading && burgerData &&
               burgerData.slice(0, 9).map((burger: BurgerType) => (
                 <Burger
                   key={burger.id}

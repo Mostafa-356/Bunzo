@@ -4,7 +4,7 @@ import { BlogService } from "../services/blogService";
 import { BlogCardProps } from "../types/blog";
 import { BLOG_QUERY_KEYS } from "../hooks/useBlog";
 import { queryClient } from "../lib/queryClient";
-import { Heading, LoadingSpinner, UserBox } from "../components/ui";
+import { BlogCardSkeleton, Heading, UserBox } from "../components/ui";
 import Newsletter from "../components/Newsletter";
 import BurgerShortList from "../components/BurgerShortList";
 import user_dp from "../assets/images/user_dp.png";
@@ -32,7 +32,13 @@ export default function Blog() {
     enabled: blogId > 0,
   });
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return (
+    <div className="flex justify-center items-center mt-16 px-6">
+      <div className="w-[90%] flex flex-col gap-4 max-w-3xl">
+        {Array.from({ length: 3 }).map((_, i) => <BlogCardSkeleton key={i} />)}
+      </div>
+    </div>
+  );
 
   if (error) {
     return (
