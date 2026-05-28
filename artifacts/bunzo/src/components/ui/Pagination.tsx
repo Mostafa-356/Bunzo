@@ -1,104 +1,85 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { PaginationProps } from "../../types/ui";
-import useAOS from "../../hooks/useAOS";
-
 
 export default function Pagination({
   currentPage,
   totalPages,
   onPageChange,
-  customStyle
+  customStyle,
 }: PaginationProps) {
-  useAOS({
-    duration: 500,
-    easing: "ease-in-out",
-  });
-
   const handlePrevious = () => {
-    if (currentPage > 1) {
-      onPageChange(currentPage - 1);
-    }
+    if (currentPage > 1) onPageChange(currentPage - 1);
   };
 
   const handleNext = () => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-    }
+    if (currentPage < totalPages) onPageChange(currentPage + 1);
   };
 
   const renderPageNumbers = () => {
-    const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <button
-          key={i}
-          onClick={() => onPageChange(i)}
-          className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
-            currentPage === i
-              ? "z-10 bg-emerald-600 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
-              : "text-gray-900 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-          }`}
-        >
-          {i}
-        </button>
-      );
+    const pages: (number | "...")[] = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push("...");
+      for (
+        let i = Math.max(2, currentPage - 1);
+        i <= Math.min(totalPages - 1, currentPage + 1);
+        i++
+      )
+        pages.push(i);
+      if (currentPage < totalPages - 2) pages.push("...");
+      pages.push(totalPages);
     }
     return pages;
   };
 
+  if (totalPages <= 1) return null;
+
   return (
-    <div className={`flex items-center justify-between border-t border-gray-200 bg-white px-4 py-5 sm:px-6 w-full ${customStyle}`}>
-      <div className="flex flex-1 justify-between sm:hidden">
-        <button
-          onClick={handlePrevious}
-          disabled={currentPage === 1}
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
-          data-aos="fade-right" data-aos-delay="100"
-        >
-          Previous
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={currentPage === totalPages}
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
-          data-aos="fade-left" data-aos-delay="100"
-        >
-          Next
-        </button>
-      </div>
-      <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm text-gray-700" data-aos="fade-right" data-aos-delay="100">
-            Page <span className="font-medium">{currentPage}</span> of{" "}
-            <span className="font-medium">{totalPages}</span>
-          </p>
-        </div>
-        <div>
-          <nav
-            aria-label="Pagination"
-            className="isolate inline-flex -space-x-px rounded-md shadow-xs"
-            data-aos="fade-left" data-aos-delay="100"
-          >
-            <button
-              onClick={handlePrevious}
-              disabled={currentPage === 1}
-              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+    <div className={`flex items-center justify-center gap-2 py-6 ${customStyle}`}>
+      <button
+        onClick={handlePrevious}
+        disabled={currentPage === 1}
+        className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200"
+      >
+        <ChevronLeftIcon className="size-4" />
+        <span className="hidden sm:inline">Previous</span>
+      </button>
+
+      <div className="flex items-center gap-1.5">
+        {renderPageNumbers().map((page, idx) =>
+          page === "..." ? (
+            <span
+              key={`ellipsis-${idx}`}
+              className="w-9 h-9 flex items-center justify-center text-gray-400 text-sm"
             >
-              <span className="sr-only">Previous</span>
-              <ChevronLeftIcon aria-hidden="true" className="size-5" />
-            </button>
-            {renderPageNumbers()}
+              …
+            </span>
+          ) : (
             <button
-              onClick={handleNext}
-              disabled={currentPage === totalPages}
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+              key={page}
+              onClick={() => onPageChange(page as number)}
+              className={`w-9 h-9 rounded-full text-sm font-semibold transition-all duration-200 ${
+                currentPage === page
+                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-200/60"
+                  : "bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700"
+              }`}
             >
-              <span className="sr-only">Next</span>
-              <ChevronRightIcon aria-hidden="true" className="size-5" />
+              {page}
             </button>
-          </nav>
-        </div>
+          )
+        )}
       </div>
+
+      <button
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200"
+      >
+        <span className="hidden sm:inline">Next</span>
+        <ChevronRightIcon className="size-4" />
+      </button>
     </div>
   );
 }

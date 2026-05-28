@@ -70,81 +70,113 @@ export default function BurgerDetails() {
     );
   }
 
+  const handlePrint = () => window.print();
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = burger.name;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+      } catch (_) {}
+    } else {
+      await navigator.clipboard.writeText(url);
+    }
+  };
+
   return (
     <div className="relative inter">
-      <section className="relative flex justify-center items-center mt-10 gap-20">
-        <div className="w-[95%] sm:w-[90%] flex flex-col justify-center items-center gap-5">
-          <div className="w-full flex flex-col sm:grid sm:grid-cols-4 justify-between gap-4 md:gap-6">
-            <div className="relative flex flex-col w-full col-span-3 gap-6">
-              <Heading text={burger.name} customClass="mb-4 text-center sm:text-start" animation="fade-right" data-aos-delay="100" />
-              <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-2 md:gap-4 w-full">
-                <div className="grid grid-cols-2 sm:grid-cols-1 sm:gap-4 w-full">
-                  <UserBox
-                    userPic={user_dp}
-                    customStyle="lg:pr-6 flex-row sm:justify-start justify-center items-center sm:border-b sm:border-b-0 border-black/20"
-                    animation="fade-right"
-                  />
-                  <div className="flex sm:hidden justify-center items-center gap-2 sm:gap-4 md:gap-5 lg:gap-6 sm:border-b border-black/20 py-1" data-aos="fade-left" data-aos-delay="200">
-                    <OutputIcon icon={printer} title="PRINT" />
-                    <OutputIcon icon={share} title="SHARE" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 col-span-2 items-center">
-                  <div className="flex justify-center sm:justify-start items-center py-1 sm:border-l rounded-none border-black/20" data-aos="fade-left" data-aos-delay="200">
-                    <Badge icon={Timer} text="PREP TIME" fontWeight="medium" time={`${burger.time} minutes`} customClass="gap-4 text-xs md:text-sm px-0" />
-                  </div>
-                  <div className="flex justify-center sm:justify-start items-center h-full py-1 sm:border-l rounded-none border-black/20" data-aos="fade-left" data-aos-delay="300">
-                    <Badge icon={ForkKnife} text={burger.category} fontWeight="normal" customClass="gap-4 text-xs md:text-sm px-0" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="hidden sm:flex sm:justify-end items-center gap-2 sm:gap-4 md:gap-5 lg:gap-6" data-aos="fade-left" data-aos-delay="300">
-              <OutputIcon icon={printer} title="PRINT" />
-              <OutputIcon icon={share} title="SHARE" />
+      {/* ── Header ── */}
+      <section className="flex justify-center items-center mt-10">
+        <div className="w-[95%] sm:w-[90%] flex flex-col gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <Heading
+              text={burger.name}
+              customClass="text-start max-w-2xl"
+              animation="fade-right"
+            />
+            <div className="flex items-center gap-3 shrink-0" data-aos="fade-left" data-aos-delay="200">
+              <OutputIcon icon={printer} title="Print" onClick={handlePrint} />
+              <OutputIcon icon={share} title="Share" onClick={handleShare} />
             </div>
           </div>
 
-          <div className="w-full grid md:grid-cols-2 justify-center lg:justify-between gap-6 md:gap-4 lg:gap-6 mt-12">
-            <div className="md:col-span-1 w-full overflow-hidden rounded-3xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-              <img src={burger.image} alt={burger.name} className="w-full h-full object-cover" />
-            </div>
-            <div className="p-6 md:p-4 lg:p-6 bg-emerald-50 rounded-3xl flex flex-col justify-between gap-6 border border-emerald-100 shadow-md" data-aos="fade-left" data-aos-delay="200">
-              <div className="flex flex-col gap-3 lg:gap-6">
-                <h2 className="font-bold text-base md:text-lg lg:text-2xl">Nutrition Information</h2>
-                <ul className="flex flex-col gap-2 lg:gap-4">
+          <div className="flex flex-wrap items-center gap-4 pb-4 border-b border-gray-100" data-aos="fade-up" data-aos-delay="100">
+            <UserBox
+              userPic={user_dp}
+              customStyle="flex-row items-center pr-4 border-r border-gray-200"
+              animation=""
+            />
+            <Badge icon={Timer} text="Prep Time" fontWeight="medium" time={`${burger.time} min`} customClass="gap-3 text-sm px-0" />
+            <div className="h-4 w-px bg-gray-200" />
+            <Badge icon={ForkKnife} text={burger.category} fontWeight="normal" customClass="gap-3 text-sm px-0 capitalize" />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Hero: Image + Nutrition ── */}
+      <section className="flex justify-center items-center mt-10">
+        <div className="w-[95%] sm:w-[90%] grid md:grid-cols-5 gap-6">
+          <div
+            className="md:col-span-3 w-full overflow-hidden rounded-3xl shadow-lg max-h-[480px]"
+            data-aos="fade-right"
+            data-aos-delay="100"
+          >
+            <img
+              src={burger.image}
+              alt={burger.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div
+            className="md:col-span-2 flex flex-col gap-5"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
+            <div className="flex-1 p-6 bg-emerald-50 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between gap-6">
+              <div className="flex flex-col gap-4">
+                <h2 className="font-bold text-xl text-gray-900">Nutrition Info</h2>
+                <ul className="flex flex-col divide-y divide-black/8">
                   {burger.nutritionInfo?.map((info, index) => (
-                    <li key={index} className="flex justify-between items-center pb-2 border-b border-b-black/10 text-xs sm:text-sm md:text-base lg:text-lg gap-6">
-                      <span>{info.name}</span>
-                      <span className="font-medium">{info.measure}</span>
+                    <li
+                      key={index}
+                      className="flex justify-between items-center py-2.5 text-sm"
+                    >
+                      <span className="text-gray-600">{info.name}</span>
+                      <span className="font-semibold text-gray-900">{info.measure}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <p className="text-xs sm:text-sm lg:text-base text-gray-500 italic">
+              <p className="text-xs text-gray-400 italic leading-relaxed">
                 * Values may vary based on exact portion weights and local ingredient seasonal variations.
               </p>
             </div>
-          </div>
 
-          <p className="mt-2 sm:mt-4 lg:mt-6 text-black/60 text-xs sm:text-sm md:text-base leading-relaxed" data-aos="fade-right" data-aos-delay="100">
-            Each Bunzo burger is a labor of love, crafted using a proprietary blend of 12 Egyptian spices
-            and the finest locally-sourced meats. We take pride in our slow-prep techniques that ensure
-            every bite delivers the authentic street-food crunch and rich heritage flavors that
-            generations of Cairenes have come to adore.
-          </p>
+            <p
+              className="text-gray-500 text-sm leading-relaxed px-1"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              Each Bunzo burger is a labor of love, crafted with a blend of 12 Egyptian spices and
+              the finest locally-sourced meats — delivering the authentic street-food flavors that
+              generations of Cairenes have come to adore.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="flex justify-center items-center mt-20">
+      {/* ── Content: Ingredients, Directions, Sidebar ── */}
+      <section className="flex justify-center items-center mt-12 mb-4">
         <div className="w-[95%] sm:w-[90%] grid lg:grid-cols-3 gap-6 lg:gap-8">
-          <div className="flex flex-col gap-10 col-span-1 lg:col-span-2">
+          <div className="flex flex-col gap-4 col-span-1 lg:col-span-2">
             <ItemsList items={burger.ingredients} title="Ingredients" />
             <ItemsList items={burger.directions} title="Build Description" />
           </div>
-          <div className="col-span-1 grid md:grid-cols-2 lg:grid-cols-1 gap-16 w-full h-fit">
+          <div className="col-span-1 flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col gap-8 w-full h-fit">
             <div className="w-full">
-              <Heading text="Other Burgers" animation="fade-left" data-aos-delay="300" />
+              <Heading text="Other Burgers" animation="fade-left" data-aos-delay="200" customClass="mb-4" />
               <BurgerSideList />
             </div>
             <GreenCard animation="fade-left" data-aos-delay="200" />

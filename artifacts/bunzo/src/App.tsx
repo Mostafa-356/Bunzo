@@ -179,7 +179,7 @@ function App() {
           </div>
 
           <div
-            className="w-11/12 sm:w-1/2 relative rounded-4xl shadow-xl border border-emerald-100/60 flex justify-center items-center bg-gradient-bunzo-light overflow-hidden"
+            className="w-11/12 sm:w-1/2 relative rounded-4xl shadow-xl border border-emerald-100/60 flex justify-center items-center bg-gradient-bunzo-light"
             data-aos="fade-left"
           >
             <img

@@ -53,18 +53,24 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="flex flex-col gap-4" data-aos="fade-up">
-            <h4 className="text-lg font-semibold text-emerald-400 mb-2">Quick Bites</h4>
+            <h4 className="text-lg font-semibold text-emerald-400 mb-2">Pages</h4>
             <nav className="flex flex-col gap-3">
               {[
-                { name: "Signature Burgers", path: "/burgers" },
-                { name: "Egyptian Specials", path: "/burgers" },
-                { name: "Street Stories", path: "/blog" },
-                { name: "Visit Us", path: "/contact" }
+                { name: "Home", path: "/" },
+                { name: "Our Menu", path: "/burgers" },
+                { name: "Blog & Stories", path: "/blog" },
+                { name: "About Us", path: "/about" },
+                { name: "Visit Us", path: "/contact" },
               ].map((item, index) => (
                 <NavLink
                   key={index}
                   to={item.path}
-                  className="text-gray-300 hover:text-emerald-400 transition-colors text-sm"
+                  end={item.path === "/"}
+                  className={({ isActive }) =>
+                    `text-sm transition-colors duration-200 hover:text-emerald-400 flex items-center gap-2 ${
+                      isActive ? "text-emerald-400 font-medium" : "text-gray-300"
+                    }`
+                  }
                 >
                   {item.name}
                 </NavLink>

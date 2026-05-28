@@ -6,8 +6,8 @@ import useAOS from "../hooks/useAOS";
 export default function Newsletter() {
   useAOS({ duration: 500, easing: "ease-out-back" });
   return (
-    <section className="flex justify-center items-center">
-      <div className="w-[95%] sm:w-[90%] relative bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center items-center gap-12 rounded-4xl pt-16 pb-20 px-6 overflow-hidden shadow-lg border border-emerald-100/60">
+    <section className="flex justify-center items-center pb-20 sm:pb-28">
+      <div className="w-[95%] sm:w-[90%] relative bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center items-center gap-12 rounded-4xl pt-16 pb-20 px-6 shadow-lg border border-emerald-100/60">
         <div className="flex flex-col justify-center items-center gap-5 max-w-2xl text-center z-10">
           <Heading
             text="Fresh Egyptian burgers to your inbox"
@@ -37,22 +37,20 @@ export default function Newsletter() {
           </button>
         </form>
 
-        <figure className="pointer-events-none">
-          <img
-            src={classic_icon}
-            alt="Egyptian cuisine"
-            className="absolute w-36 sm:w-52 lg:w-80 -bottom-16 -left-8 lg:-bottom-32 lg:-left-16 opacity-80"
-            data-aos="fade-up"
-          />
-        </figure>
-        <figure className="pointer-events-none">
-          <img
-            src={spicy_burger}
-            alt="Egyptian burger"
-            className="absolute w-36 sm:w-52 lg:w-80 -bottom-16 -right-8 lg:-bottom-32 lg:-right-16 opacity-80"
-            data-aos="fade-up"
-          />
-        </figure>
+        <img
+          src={classic_icon}
+          alt="Egyptian cuisine"
+          className="absolute w-40 sm:w-56 lg:w-80 -bottom-20 -left-10 lg:-bottom-28 lg:-left-14 opacity-95 pointer-events-none drop-shadow-2xl"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        />
+        <img
+          src={spicy_burger}
+          alt="Egyptian burger"
+          className="absolute w-40 sm:w-56 lg:w-80 -bottom-20 -right-10 lg:-bottom-28 lg:-right-14 opacity-95 pointer-events-none drop-shadow-2xl"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        />
       </div>
     </section>
   );

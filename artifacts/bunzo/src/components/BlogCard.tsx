@@ -21,7 +21,7 @@ export default function BlogCard({
   return (
     <div
       key={id}
-      className="relative flex flex-col sm:flex-row gap-4 items-center rounded-3xl p-3 sm:p-4 bg-white border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+      className="relative flex flex-col sm:flex-row gap-4 items-center rounded-3xl p-3 sm:p-4 bg-white border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 min-h-[140px]"
       data-aos={animation}
     >
       <Link to={`/blog/${slugify(title)}`} className="flex-shrink-0">
