@@ -1,7 +1,6 @@
 import { CategoryItemProps } from "../../types/ui";
 
 export const CategoryItem = ({ image, name, animation, bgColor }: CategoryItemProps) => {
-  // Map bgColor to Tailwind gradient classes
   const getGradientClass = (color: string) => {
     switch (color) {
       case "#F7F8F4": return "bg-gradient-category-rice";
@@ -13,20 +12,20 @@ export const CategoryItem = ({ image, name, animation, bgColor }: CategoryItemPr
       default: return "bg-gradient-bunzo-card";
     }
   };
-  
+
   return (
     <div
-      className={`flex flex-col justify-center items-center w-full gap-4 md:gap-6 lg:gap-8 py-5 px-8 rounded-3xl shadow-md ${getGradientClass(bgColor)}`}
+      className={`group flex flex-col justify-center items-center w-full gap-3 md:gap-5 py-6 px-4 rounded-3xl shadow-md hover:shadow-xl border border-white/80 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer ${getGradientClass(bgColor)}`}
       data-aos={animation}
     >
-      <figure>
+      <figure className="w-16 h-16 flex items-center justify-center">
         <img
           src={image}
           alt={name}
-          className="max-w-14 sm:max-w-18 md:max-w-20"
+          className="max-w-14 sm:max-w-16 md:max-w-18 group-hover:scale-110 transition-transform duration-300"
         />
       </figure>
-      <p className="text-lg font-semibold">{name}</p>
+      <p className="text-sm sm:text-base font-semibold text-gray-800 text-center">{name}</p>
     </div>
   );
 };

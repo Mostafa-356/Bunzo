@@ -26,39 +26,39 @@ const Burger = React.memo(
 
     return (
       <div
-        className={`relative flex flex-col justify-between gap-4 rounded-2xl p-3 w-full h-full max-w-80 max-h-96 cursor-pointer bg-gradient-bunzo-card ${customClass}`}
+        className={`relative flex flex-col justify-between gap-4 rounded-3xl p-3 w-full h-full max-w-80 max-h-96 cursor-pointer bg-white border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${customClass}`}
         data-aos={animation}
       >
-        <div className="flex flex-col gap-4 ">
-          <figure className="relative overflow-hidden rounded-2xl max w-full md:h-36 max-h-48 xl:h-48">
+        <div className="flex flex-col gap-4">
+          <figure className="relative overflow-hidden rounded-2xl w-full md:h-36 max-h-48 xl:h-48 bg-gray-50">
             <div
-              className="absolute top-4 right-4 p-2.5 rounded-full bg-white z-10"
+              className="absolute top-3 right-3 p-2 rounded-full bg-white shadow-md z-10 cursor-pointer hover:scale-110 transition-transform"
               onClick={role === "admin" ? handleToggleFavorite : undefined}
             >
-              <img src={isFavorite ? heart_fill : heart_blank} alt="fav" />
+              <img src={isFavorite ? heart_fill : heart_blank} alt="fav" className="w-4 h-4" />
             </div>
-            <Link to={`/burgers/${id}`} className="relative">
+            <Link to={`/burgers/${id}`} className="relative block">
               <img
                 src={image}
                 alt={name}
-                className="hover:scale-[1.1] transition-all w-full h-full object-cover"
+                className="hover:scale-[1.08] transition-transform duration-500 w-full h-full object-cover"
               />
             </Link>
           </figure>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2 px-1">
             <Link
               to={`/burgers/${id}`}
-              className="text-xl font-semibold hover:text-emerald-600 transition-colors"
+              className="text-lg font-semibold text-gray-900 hover:text-emerald-600 transition-colors leading-snug"
             >
               {name}
             </Link>
           </div>
         </div>
 
-        <div className="flex ml-[-8px]">
-          <Badge icon={timer} text={`${time} minutes`} />
-          <Badge icon={forkKnife} text={category} />
+        <div className="flex gap-1 px-1">
+          <Badge icon={timer} text={`${time} min`} customClass="bg-emerald-50 text-emerald-700" />
+          <Badge icon={forkKnife} text={category} customClass="bg-gray-50 text-gray-600" />
         </div>
 
         {role === "admin" && (

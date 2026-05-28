@@ -10,20 +10,21 @@ export const Badge = ({
 }: BadgeProps) => {
   return (
     <div
-      className={`flex flex-wrap items-center gap-1 sm:gap-1.5 rounded-full sm:py-2 sm:px-3 py-1 px-2.5 w-fit ${customClass}`}
+      className={`flex items-center gap-1.5 rounded-full py-1.5 px-3 w-fit shadow-sm ${customClass}`}
     >
-      <span>
-        <img src={icon} alt="" />
+      <span className="flex-shrink-0">
+        <img src={icon} alt="" className="w-4 h-4" />
       </span>
 
       <div className="flex flex-col">
-        <p className={`text-gray-600 text-xs sm:text-sm font-${fontWeight}`}>
+        <p className={`text-xs sm:text-sm font-${fontWeight || "medium"} leading-tight`}>
           {text}
         </p>
-
-        <p className={`text-xs sm:text-sm font-normal ${timeStyle}`}>
-          {time || ""}
-        </p>
+        {time && (
+          <p className={`text-xs font-normal ${timeStyle}`}>
+            {time}
+          </p>
+        )}
       </div>
     </div>
   );

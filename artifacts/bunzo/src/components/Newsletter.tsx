@@ -7,52 +7,49 @@ export default function Newsletter() {
   useAOS({ duration: 500, easing: "ease-out-back" });
   return (
     <section className="flex justify-center items-center">
-      <div className="w-[95%] sm:w-[90%] relative bg-gradient-to-br from-emerald-50 to-emerald-100 flex flex-col justify-center items-center gap-16 rounded-3xl pt-18 px-4 overflow-hidden">
-        <div className="flex flex-col justify-center items-center gap-6">
+      <div className="w-[95%] sm:w-[90%] relative bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center items-center gap-12 rounded-4xl pt-16 pb-20 px-6 overflow-hidden shadow-lg border border-emerald-100/60">
+        <div className="flex flex-col justify-center items-center gap-5 max-w-2xl text-center z-10">
           <Heading
             text="Fresh Egyptian burgers to your inbox"
-            customClass="text-black text-center"
+            customClass="text-gray-900 text-center"
             animation="fade-right"
           />
           <SubHeading
-            text="Join the Bunzo family and be the first to know about new Egyptian burger creations, exclusive burger deals, limited-time flavors, and authentic Cairo street food stories!"
-            customClass="text-center text-gray-600 max-w-4/5"
+            text="Join the Bunzo family and be the first to know about new Egyptian burger creations, exclusive deals, and authentic Cairo street food stories!"
+            customClass="text-center text-gray-500 leading-relaxed"
             animation="fade-left"
-            data-aos-delay="300"
           />
         </div>
 
-        <form className="grid grid-cols-4 justify-between items-center rounded-lg overflow-hidden lg:w-4/10">
-          <div className="bg-white flex justify-between items-center py-4 px-6 w-full h-full col-span-3">
+        <form className="flex items-center gap-0 rounded-full overflow-hidden bg-white shadow-lg border border-gray-100 w-full max-w-md z-10" data-aos="fade-up">
+          <div className="flex items-center flex-1 py-3 px-5">
             <input
               type="email"
-              placeholder="Enter your email for exclusive burger deals"
-              className="text-xs sm:text-sm md:text-base leading-normal text-gray-700 outline-0 w-full h-full placeholder:text-gray-400"
-              data-aos="fade-right"
+              placeholder="Your email address"
+              className="text-sm text-gray-700 outline-none w-full placeholder:text-gray-400 bg-transparent"
             />
           </div>
           <button
             type="submit"
-            className="h-full bg-emerald-600 hover:bg-emerald-700 px-3 py-2 text-xs sm:text-sm text-white transition-colors"
-            data-aos="fade-left"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-6 py-3 rounded-full m-1 transition-colors whitespace-nowrap shadow-md"
           >
             Join Family
           </button>
         </form>
 
-        <figure>
+        <figure className="pointer-events-none">
           <img
             src={classic_icon}
             alt="Egyptian cuisine"
-            className="absolute w-40 sm:w-60 lg:w-96 -bottom-20 -left-10 lg:-bottom-40 lg:-left-20"
+            className="absolute w-36 sm:w-52 lg:w-80 -bottom-16 -left-8 lg:-bottom-32 lg:-left-16 opacity-80"
             data-aos="fade-up"
           />
         </figure>
-        <figure>
+        <figure className="pointer-events-none">
           <img
             src={spicy_burger}
             alt="Egyptian burger"
-            className="absolute w-40 sm:w-60 lg:w-96 -bottom-20 -right-10 lg:-bottom-40 lg:-right-20"
+            className="absolute w-36 sm:w-52 lg:w-80 -bottom-16 -right-8 lg:-bottom-32 lg:-right-16 opacity-80"
             data-aos="fade-up"
           />
         </figure>

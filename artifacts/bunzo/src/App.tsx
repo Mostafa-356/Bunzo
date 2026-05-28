@@ -34,20 +34,11 @@ import HeroSection from "./components/HomeHeroSection";
 
 import useBurger from "./hooks/useBurger";
 import useAOS from "./hooks/useAOS";
-function App() {
-  useAOS({
-    duration: 500,
-    easing: "ease-in-out",
-  });
 
-  const {
-    burgerData,
-    isLoading,
-    error,
-    editBurger,
-    deleteBurger,
-    toggleFavorite,
-  } = useBurger();
+function App() {
+  useAOS({ duration: 500, easing: "ease-in-out" });
+
+  const { burgerData, isLoading, error, editBurger, deleteBurger, toggleFavorite } = useBurger();
 
   const [showEditForm, setShowEditForm] = useState<boolean>(false);
   const [selectedBurger, setSelectedBurger] = useState<BurgerType | null>(null);
@@ -60,13 +51,13 @@ function App() {
     { image: seafood_icon, name: "Seafood", bgColor: "#F4F4F4" },
     { image: traditional_icon, name: "Traditional", bgColor: "#F5F5F5" },
   ];
+
   const posts = [
     { image: pharaoh_burger_img, name: "The Pharaoh's Burger Special" },
     { image: cairo_classic_img, name: "Cairo Street Classic Burger" },
     { image: nile_veggie_img, name: "Nile Valley Veggie Burger" },
     { image: spicy_sahara_img, name: "Spicy Sahara Burger Heat" },
   ];
-
 
   function handleOpenEditForm(burger: BurgerType) {
     setSelectedBurger(burger);
@@ -79,75 +70,75 @@ function App() {
   }
 
   return (
-    <div className="pt-10 relative inter">
-      <HeroSection />
+    <div className="relative inter">
 
-      <section className="flex justify-center items-center mt-40">
-        <div className="w-[95%] sm:w-[90%] flex flex-col gap-18">
-          <div className="flex justify-between items-center mb-10">
+      {/* Hero */}
+      <section className="flex justify-center items-center pt-8 pb-4">
+        <div className="w-[95%] sm:w-[90%]">
+          <HeroSection />
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="flex justify-center items-center mt-28 mb-4">
+        <div className="w-[95%] sm:w-[90%] flex flex-col gap-10">
+          <div className="flex justify-between items-center">
             <Heading text="Burger Categories" animation="fade-right" />
-
             <Button
               text="Explore All Flavors"
-              customClass="bg-emerald-100 text-emerald-800 shadow-md hover:bg-emerald-200"
+              customClass="bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200"
               animation="fade-left"
             />
           </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-6">
-            {categories &&
-              categories.map((category, index) => (
-                <CategoryItem
-                  key={index}
-                  image={category.image}
-                  name={category.name}
-                  bgColor={category.bgColor}
-                  animation={index % 2 === 0 ? "fade-up" : "fade-down"}
-                />
-              ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-5">
+            {categories.map((category, index) => (
+              <CategoryItem
+                key={index}
+                image={category.image}
+                name={category.name}
+                bgColor={category.bgColor}
+                animation={index % 2 === 0 ? "fade-up" : "fade-down"}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="relative flex justify-center items-center mt-40 gap-20">
-        <div className="w-[95%] sm:w-[90%] flex flex-col justify-center items-center gap-18">
-          <div className="flex flex-col justify-between items-center">
+      {/* Featured Burgers */}
+      <section className="relative flex justify-center items-center mt-28">
+        <div className="w-[95%] sm:w-[90%] flex flex-col justify-center items-center gap-14">
+          <div className="flex flex-col justify-center items-center gap-5 max-w-2xl text-center">
             <Heading
               text="Authentic Egyptian Street Burgers"
-              customClass="mb-6"
+              customClass="text-gray-900"
               animation="fade-left"
             />
             <SubHeading
               text="Experience the rich flavors of Egypt with our signature burgers. Each bite tells a story of ancient spices, modern techniques, and the vibrant street food culture that makes Cairo legendary."
-              customClass="text-center text-gray-500"
+              customClass="text-gray-500 leading-relaxed"
               animation="fade-right"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-7xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
             {isLoading && <LoadingSpinner />}
             {error && <p className="text-red-500">{error}</p>}
             {burgerData &&
-              burgerData
-                .slice(0, 9)
-                .map((burger: BurgerType) => (
-                  <Burger
-                    key={burger.id}
-                    id={burger.id}
-                    image={burger.image}
-                    name={burger.name}
-                    time={burger.time}
-                    category={burger.category}
-                    isFavorite={burger.isFavorite}
-                    handleDeleteItem={() => deleteBurger(burger.id)}
-                    handleOpenEditForm={() => handleOpenEditForm(burger)}
-                    handleToggleFavorite={() => toggleFavorite(burger.id)}
-                    customClass="p-2.5"
-                    animation={
-                      burger.id && burger.id % 2 === 0 ? "fade-up" : "fade-down"
-                    }
-                  />
-                ))}
+              burgerData.slice(0, 9).map((burger: BurgerType) => (
+                <Burger
+                  key={burger.id}
+                  id={burger.id}
+                  image={burger.image}
+                  name={burger.name}
+                  time={burger.time}
+                  category={burger.category}
+                  isFavorite={burger.isFavorite}
+                  handleDeleteItem={() => deleteBurger(burger.id)}
+                  handleOpenEditForm={() => handleOpenEditForm(burger)}
+                  handleToggleFavorite={() => toggleFavorite(burger.id)}
+                  animation={burger.id && burger.id % 2 === 0 ? "fade-up" : "fade-down"}
+                />
+              ))}
           </div>
         </div>
 
@@ -163,32 +154,32 @@ function App() {
         )}
       </section>
 
-      <section className="w-full flex justify-center items-center mt-36 mb-40">
-        <div className="w-[95%] sm:w-[90%] flex flex-col sm:flex-row justify-between items-center gap-20">
-          <div className="w-full sm:w-1/2 flex flex-col justify-center items-start gap-8 sm:gap-12 md:gap-14 lg:gap-18">
-            <div className="flex flex-col justify-center items-start gap-6">
+      {/* About / Story */}
+      <section className="w-full flex justify-center items-center mt-32 mb-32">
+        <div className="w-[95%] sm:w-[90%] flex flex-col sm:flex-row justify-between items-center gap-16">
+          <div className="w-full sm:w-1/2 flex flex-col justify-center items-start gap-8">
+            <div className="flex flex-col justify-center items-start gap-5">
               <Heading
                 text="Every Egyptian deserves the perfect burger experience"
-                customClass="tracking-tight max-w-[90%]"
+                customClass="tracking-tight leading-tight text-gray-900"
                 animation="fade-left"
               />
               <SubHeading
-                text="From the bustling streets of Cairo to modern kitchens, we've perfected the art of Egyptian street food. Our burgers blend traditional spices with contemporary techniques, creating flavors that celebrate our heritage while appealing to the modern palate."
-                customClass="max-w-[90%] text-gray-500"
+                text="From the bustling streets of Cairo to modern kitchens, we've perfected the art of Egyptian street food. Our burgers blend traditional spices with contemporary techniques, creating flavors that celebrate our heritage."
+                customClass="text-gray-500 leading-relaxed"
                 animation="fade-right"
               />
             </div>
-
             <Button
               text="Discover Our Story"
               textColor="text-white"
-              customClass="bg-emerald-600 hover:bg-emerald-700"
+              customClass="bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-200"
               animation="fade-up"
             />
           </div>
 
           <div
-            className="w-11/12 sm:w-1/2 relative rounded-3xl shadow-md flex justify-center items-center bg-gradient-bunzo-light"
+            className="w-11/12 sm:w-1/2 relative rounded-4xl shadow-xl border border-emerald-100/60 flex justify-center items-center bg-gradient-bunzo-light overflow-hidden"
             data-aos="fade-left"
           >
             <img
@@ -198,7 +189,7 @@ function App() {
               data-aos="fade-left"
               data-aos-delay="300"
             />
-            <StickyObject image={tomato} customClass=" bottom-1/5 -left-5" />
+            <StickyObject image={tomato} customClass="bottom-1/5 -left-5" />
             <StickyObject image={signature_icon} customClass="top-1 left-1/10 size-16" />
             <StickyObject image={onion} customClass="top-1/6 left-4/6" />
             <StickyObject image={traditional_icon} customClass="top-4/12 left-10/12 size-20" />
@@ -206,84 +197,77 @@ function App() {
         </div>
       </section>
 
-      <section className="mb-28 flex justify-center items-center">
-        <div
-          className="relative w-[95%] sm:w-[90%] bg-black flex flex-col justify-center items-center gap-10 rounded-2xl py-14 bg-cover bg-center bg-no-repeat overflow-hidden bg-community"
-        >
-          <div className="absolute w-full h-full bg-black backdrop-3xl opacity-80"></div>
-          <div className="flex flex-col justify-center items-center gap-6 z-10">
+      {/* Community Section */}
+      <section className="mb-24 flex justify-center items-center">
+        <div className="relative w-[95%] sm:w-[90%] bg-gray-900 flex flex-col justify-center items-center gap-8 rounded-4xl py-20 bg-cover bg-center bg-no-repeat overflow-hidden bg-community shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/75 to-black/85"></div>
+          <div className="flex flex-col justify-center items-center gap-5 z-10 max-w-2xl text-center px-6">
             <Heading
               text="Join the Bunzo Family"
-              customClass="mb-6 text-white text-center max-w-5/6"
+              customClass="text-white text-center"
               animation="fade-up"
             />
             <SubHeading
               text="Become part of Egypt's most beloved burger community. Share your street food stories, discover new flavors, and connect with fellow food lovers who appreciate authentic Egyptian cuisine."
-              customClass="text-center text-white max-w-5/6"
+              customClass="text-center text-white/80 leading-relaxed"
               animation="fade-up"
-              data-aos-delay="300"
             />
           </div>
-
-          <div className="flex justify-center items-center mt-10 z-10">
+          <div className="flex justify-center items-center z-10">
             <Button
               text="Join Our Community"
-              textColor="text-emerald-800"
-              customClass="bg-white hover:bg-gray-100"
+              textColor="text-emerald-800 font-bold"
+              customClass="bg-white hover:bg-gray-50 shadow-xl"
               animation="fade-up"
-              data-aos-delay="500"
             />
           </div>
         </div>
       </section>
 
-      <section
-        className="mb-32 flex justify-center items-center py-18 bg-gradient-bunzo-instagram"
-      >
-        <div className="w-[95%] sm:w-[90%] flex flex-col justify-center items-center gap-10 rounded-2xl">
-          <div className="flex flex-col justify-center items-center gap-6">
+      {/* Instagram Feed */}
+      <section className="mb-28 flex justify-center items-center py-16 bg-gradient-bunzo-instagram">
+        <div className="w-[95%] sm:w-[90%] flex flex-col justify-center items-center gap-12">
+          <div className="flex flex-col justify-center items-center gap-5 max-w-2xl text-center">
             <Heading
               text="Follow @bunzo_egypt on Instagram"
-              customClass="text-center"
+              customClass="text-center text-gray-900"
               animation="fade-right"
             />
             <SubHeading
-              text="Get inspired by our daily burger creations, behind-the-scenes stories from Egyptian kitchens, and the vibrant street food culture that defines our brand. See how tradition meets innovation!"
-              customClass="text-center text-gray-500"
+              text="Get inspired by our daily burger creations, behind-the-scenes stories from Egyptian kitchens, and the vibrant street food culture that defines our brand."
+              customClass="text-center text-gray-500 leading-relaxed"
               animation="fade-left"
-              data-aos-delay="300"
             />
           </div>
-          <div className="  flex flex-col justify-center items-center gap-16">
+
+          <div className="flex flex-col justify-center items-center gap-10 w-full">
             <div className="flex flex-wrap justify-center items-center gap-4 w-full">
-              {posts &&
-                posts.map((post, index) => (
-                  <div key={index}>
-                    <img
-                      src={post.image}
-                      alt={post.name}
-                      className="rounded-xl shadow-md max-w-64"
-                      data-aos={index % 2 === 0 ? "fade-up" : "fade-down"}
-                      data-aos-delay={index * 100}
-                    />
-                  </div>
-                ))}
+              {posts.map((post, index) => (
+                <div key={index} className="group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <img
+                    src={post.image}
+                    alt={post.name}
+                    className="max-w-60 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    data-aos={index % 2 === 0 ? "fade-up" : "fade-down"}
+                    data-aos-delay={index * 80}
+                  />
+                </div>
+              ))}
             </div>
 
             <Button
               text="Visit Our Instagram"
               icon={instagram_white}
               textColor="text-white"
-              customClass="bg-emerald-600 hover:bg-emerald-700"
+              customClass="bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-200"
               animation="fade-up"
             />
           </div>
         </div>
       </section>
 
-
-
-      <section data-aos="fade-left" className="mb-20">
+      {/* Newsletter */}
+      <section className="mb-20" data-aos="fade-up">
         <Newsletter />
       </section>
     </div>

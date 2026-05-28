@@ -1,69 +1,40 @@
-/* Bunzo Custom Gradients - Centralized Styles */
+/* ── Bunzo Gradients ─────────────────────────────────────── */
 
-/* Background Gradients */
 .bg-gradient-bunzo-light {
-  background: linear-gradient(to bottom, white, #ecfdf5);
+  background: linear-gradient(145deg, #f0fdf4, #dcfce7);
 }
-
 .bg-gradient-bunzo-primary {
   background: linear-gradient(135deg, #10b981, #059669);
 }
-
 .bg-gradient-bunzo-hero {
   background: linear-gradient(135deg, #064e3b, #10b981);
 }
-
 .bg-gradient-bunzo-card {
-  background: linear-gradient(to bottom, white, #f0fdf4);
+  background: linear-gradient(160deg, #ffffff, #f0fdf4);
 }
-
 .bg-gradient-bunzo-contact {
-  background: linear-gradient(to bottom, white, #ecfdf5);
+  background: linear-gradient(160deg, #f0fdf4, #dcfce7);
 }
-
 .bg-gradient-bunzo-green {
-  background: linear-gradient(to bottom, #336F53, #1E4B3D);
+  background: linear-gradient(160deg, #336F53, #1E4B3D);
 }
-
 .bg-gradient-bunzo-instagram {
-  background: linear-gradient(to bottom, white, #e6fffa);
+  background: linear-gradient(160deg, #ffffff, #ecfdf5 40%, #f0fdf4);
 }
 
-/* Dynamic Category Gradients */
-.bg-gradient-category-rice {
-  background: linear-gradient(to bottom, white, #F7F8F4);
-}
+/* Category card gradients */
+.bg-gradient-category-rice      { background: linear-gradient(160deg, #fff, #F7F8F4); }
+.bg-gradient-category-veggies   { background: linear-gradient(160deg, #fff, #EDFBEE); }
+.bg-gradient-category-beef      { background: linear-gradient(160deg, #fff, #FEF2F2); }
+.bg-gradient-category-cake      { background: linear-gradient(160deg, #fff, #FFFBEB); }
+.bg-gradient-category-bread     { background: linear-gradient(160deg, #fff, #F4F4F4); }
+.bg-gradient-category-chocolate { background: linear-gradient(160deg, #fff, #F5F5F5); }
 
-.bg-gradient-category-veggies {
-  background: linear-gradient(to bottom, white, #FAFDF8);
-}
-
-.bg-gradient-category-beef {
-  background: linear-gradient(to bottom, white, #FBECEB);
-}
-
-.bg-gradient-category-cake {
-  background: linear-gradient(to bottom, white, #FEF7E9);
-}
-
-.bg-gradient-category-bread {
-  background: linear-gradient(to bottom, white, #F4F4F4);
-}
-
-.bg-gradient-category-chocolate {
-  background: linear-gradient(to bottom, white, #F5F5F5);
-}
-
-/* Background Images */
+/* Community background */
 .bg-community {
   background-image: url('../assets/images/community_bg.png');
 }
 
-/* Utility Classes */
-.rotate-30 {
-  transform: rotate(30deg);
-}
-
-.backdrop-blur-bunzo {
-  backdrop-filter: blur(12px);
-}
+/* Utilities */
+.rotate-30           { transform: rotate(30deg); }
+.backdrop-blur-bunzo { backdrop-filter: blur(12px); }

@@ -2,69 +2,28 @@
 @import "tailwindcss";
 @import "./styles/gradients.css";
 
-/* Custom Scrollbar Styles - Bunzo Brand */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 4px;
-}
-
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 99px; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #10b981, #059669);
-  border-radius: 4px;
-  border: 1px solid #f1f5f9;
+  background: linear-gradient(180deg, #10b981, #059669);
+  border-radius: 99px;
+  border: 2px solid #f1f5f9;
 }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #059669, #047857); }
+::-webkit-scrollbar-button { display: none; height: 0; width: 0; }
+* { scrollbar-width: thin; scrollbar-color: #10b981 #f1f5f9; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #059669, #047857);
-}
-
-::-webkit-scrollbar-corner {
-  background: #f1f5f9;
-}
-
-/* Remove scrollbar arrows (top/bottom/left/right buttons) */
-::-webkit-scrollbar-button {
-  display: none;
-  height: 0;
-  width: 0;
-}
-
-::-webkit-scrollbar-button:start:decrement,
-::-webkit-scrollbar-button:end:increment,
-::-webkit-scrollbar-button:start:increment,
-::-webkit-scrollbar-button:end:decrement {
-  display: none;
-  height: 0;
-  width: 0;
-}
-
-/* Firefox Scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #10b981 #f1f5f9;
-}
-
-/* Remove inner scrollbars from containers */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
+/* ── Base ────────────────────────────────────────────────── */
 html {
   width: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -72,6 +31,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: visible;
+  background-color: #fafafa;
 }
 
 #root {
@@ -84,128 +44,50 @@ body {
   padding: 0;
 }
 
-.public-sans {
-  font-family: "Public Sans", monospace;
-  font-optical-sizing: auto;
-  font-style: normal;
+/* ── Typography ──────────────────────────────────────────── */
+.public-sans  { font-family: "Public Sans", monospace; font-optical-sizing: auto; }
+.inter        { font-family: "Inter", sans-serif; font-optical-sizing: auto; }
+.lobster-regular { font-family: "Lobster", sans-serif; }
+
+/* ── Focus & Selection ───────────────────────────────────── */
+*:focus-visible { outline: 2px solid #10b981; outline-offset: 2px; border-radius: 4px; }
+::selection { background-color: #10b981; color: white; }
+
+/* ── Smooth transitions everywhere ──────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Enhanced card shadow system ────────────────────────── */
+.card-shadow {
+  box-shadow: 0 2px 8px -2px rgba(0,0,0,.06), 0 6px 24px -4px rgba(0,0,0,.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-shadow:hover {
+  box-shadow: 0 6px 20px -4px rgba(0,0,0,.10), 0 16px 48px -8px rgba(0,0,0,.12);
+  transform: translateY(-3px);
 }
 
-.inter {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+/* ── Loader spinner ──────────────────────────────────────── */
+.loader {
+  width: 52px;
+  height: 52px;
+  position: relative;
+  animation: rotate 1.5s ease-in infinite alternate;
 }
-
-.lobster-regular {
-  font-family: "Lobster", sans-serif;
-  font-style: normal;
+.loader::before {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  color: #10b981;
+  background: currentColor;
+  width: 52px; height: 26px;
+  border-radius: 0 0 40px 40px;
 }
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+.loader::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 10%;
+  background: #fff;
+  width: 7px; height: 52px;
+  animation: rotate 1.2s linear infinite alternate-reverse;
 }
-
-/* Focus styles for accessibility */
-*:focus {
-  outline: 2px solid #10b981;
-  outline-offset: 2px;
-}
-
-/* Selection styles */
-::selection {
-  background-color: #10b981;
-  color: white;
-}
-
-::-moz-selection {
-  background-color: #10b981;
-  color: white;
-}
-
-/* Navigation Link Overrides - Ensure Bunzo colors */
-nav a {
-  text-decoration: none !important;
-}
-
-nav a:hover {
-  background-color: #10b981 !important;
-  color: white !important;
-}
-
-nav a:focus {
-  background-color: #10b981 !important;
-  color: white !important;
-}
-
-nav a.active {
-  background-color: #10b981 !important;
-  color: white !important;
-}
-
-/* Force override ALL blue/indigo colors with emerald */
-.bg-blue-500,
-.bg-blue-600,
-.bg-indigo-500,
-.bg-indigo-600 {
-  background-color: #10b981 !important;
-}
-
-.text-blue-500,
-.text-blue-600,
-.text-indigo-500,
-.text-indigo-600 {
-  color: #10b981 !important;
-}
-
-.border-blue-500,
-.border-blue-600,
-.border-indigo-500,
-.border-indigo-600 {
-  border-color: #10b981 !important;
-}
-
-.ring-blue-500,
-.ring-blue-600,
-.ring-indigo-500,
-.ring-indigo-600 {
-  --tw-ring-color: #10b981 !important;
-}
-
-.focus\:ring-blue-500:focus,
-.focus\:ring-blue-600:focus,
-.focus\:ring-indigo-500:focus,
-.focus\:ring-indigo-600:focus {
-  --tw-ring-color: #10b981 !important;
-}
-
-.hover\:bg-blue-500:hover,
-.hover\:bg-blue-600:hover,
-.hover\:bg-indigo-500:hover,
-.hover\:bg-indigo-600:hover {
-  background-color: #10b981 !important;
-}
-
-.hover\:text-blue-500:hover,
-.hover\:text-blue-600:hover,
-.hover\:text-indigo-500:hover,
-.hover\:text-indigo-600:hover {
-  color: #10b981 !important;
-}
-
-/* Ensure emerald colors are available */
-.bg-emerald-600 {
-  background-color: #059669 !important;
-}
-
-.text-emerald-600 {
-  color: #059669 !important;
-}
-
-.hover\:bg-emerald-600:hover {
-  background-color: #059669 !important;
-}
-
-.focus\:bg-emerald-600:focus {
-  background-color: #059669 !important;
-}
+@keyframes rotate { 100% { transform: rotate(360deg) } }
