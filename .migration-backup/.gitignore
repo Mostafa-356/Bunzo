@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+
+# Local build output / debug files (never commit these)
+eslint-output.json
+tsc.txt
+tsc_output.txt
+audit-report.json
+license-report.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
