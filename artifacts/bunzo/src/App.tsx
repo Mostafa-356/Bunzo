@@ -97,7 +97,7 @@ function App() {
                 image={category.image}
                 name={category.name}
                 bgColor={category.bgColor}
-                animation={index % 2 === 0 ? "fade-up" : "fade-down"}
+                animation={["zoom-in-up", "zoom-in", "flip-left", "zoom-in-up", "flip-right", "zoom-in"][index % 6]}
               />
             ))}
           </div>
@@ -111,12 +111,12 @@ function App() {
             <Heading
               text="Authentic Egyptian Street Burgers"
               customClass="text-gray-900"
-              animation="fade-left"
+              animation="zoom-in-down"
             />
             <SubHeading
               text="Experience the rich flavors of Egypt with our signature burgers. Each bite tells a story of ancient spices, modern techniques, and the vibrant street food culture that makes Cairo legendary."
               customClass="text-gray-500 leading-relaxed"
-              animation="fade-right"
+              animation="zoom-in-up"
             />
           </div>
 
@@ -136,7 +136,7 @@ function App() {
                   handleDeleteItem={() => deleteBurger(burger.id)}
                   handleOpenEditForm={() => handleOpenEditForm(burger)}
                   handleToggleFavorite={() => toggleFavorite(burger.id)}
-                  animation={burger.id && burger.id % 2 === 0 ? "fade-up" : "fade-down"}
+                  animation={burger.id && burger.id % 3 === 0 ? "zoom-in-up" : burger.id && burger.id % 3 === 1 ? "zoom-in" : "flip-up"}
                 />
               ))}
           </div>
@@ -179,8 +179,8 @@ function App() {
           </div>
 
           <div
-            className="w-11/12 sm:w-1/2 relative rounded-4xl shadow-xl border border-emerald-100/60 flex justify-center items-center bg-gradient-bunzo-light"
-            data-aos="fade-left"
+            className="w-11/12 sm:w-1/2 relative rounded-4xl shadow-2xl border border-emerald-800/40 flex justify-center items-center bg-gradient-bunzo-hero"
+            data-aos="zoom-in-left"
           >
             <img
               src={smiling_chef}

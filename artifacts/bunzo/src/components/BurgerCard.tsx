@@ -27,7 +27,7 @@ const Burger = React.memo(
 
     return (
       <div
-        className={`relative flex flex-col justify-between gap-4 rounded-3xl p-3 w-full h-full max-w-80 max-h-96 cursor-pointer bg-white border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${customClass}`}
+        className={`relative flex flex-col justify-between gap-4 rounded-3xl p-3 w-full h-full max-w-80 max-h-96 cursor-pointer bg-gradient-to-b from-white to-gray-50 border border-gray-200 shadow-md hover:shadow-2xl hover:-translate-y-2 hover:border-emerald-100 transition-all duration-300 ${customClass}`}
         data-aos={animation}
       >
         <div className="flex flex-col gap-4">

@@ -16,21 +16,22 @@ export default function HeroSlide({
   button,
 }: HeroSlideProps) {
   return (
-    <div className="w-full min-h-10/12 flex relative rounded-3xl sm:rounded-4xl overflow-hidden shadow-xl">
-      <div className="relative py-10 px-6 sm:px-8 sm:py-12 md:px-10 md:py-10 bg-gradient-to-br from-emerald-50 to-green-50 sm:w-1/2 flex flex-col justify-around gap-6">
+    <div className="w-full min-h-[500px] sm:min-h-[560px] lg:min-h-[620px] flex relative rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl">
+      {/* Left — dark emerald panel */}
+      <div className="relative py-10 px-6 sm:px-8 sm:py-14 md:px-12 bg-gradient-bunzo-hero sm:w-[52%] flex flex-col justify-between gap-8 z-10">
         <Badge
           icon={scroll}
           text="Hot burger"
           fontWeight="semibold"
-          customClass="bg-white shadow-md absolute top-4 left-4 sm:top-6 sm:left-6"
+          customClass="bg-white/10 backdrop-blur-sm text-white border border-white/20 self-start"
         />
 
-        <div className="w-full flex flex-col gap-6 max-w-[95%]">
-          <div className="flex flex-col justify-between items-start gap-5 mt-10 lg:mt-16">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-[52px] font-bold leading-tight text-gray-900 tracking-tight">
+        <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[54px] font-bold leading-tight text-white tracking-tight">
               {title}
             </h1>
-            <p className="text-sm font-normal text-gray-500 leading-relaxed">
+            <p className="text-sm font-normal text-emerald-200/80 leading-relaxed max-w-sm">
               {description}
             </p>
           </div>
@@ -42,29 +43,39 @@ export default function HeroSlide({
                 icon={badge.icon === "timer" ? timer : forkKnife}
                 text={badge.text}
                 fontWeight="medium"
-                customClass="bg-white shadow-sm text-gray-700"
+                customClass="bg-white/10 backdrop-blur-sm text-white border border-white/20"
               />
             ))}
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mt-2">
-          <UserBox userPic={user_dp} user={user} />
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+          <UserBox
+            userPic={user_dp}
+            user={user}
+            nameStyle="text-white"
+            dateStyle="text-emerald-300"
+            imageStyle="border-white/30"
+          />
           <Button
             text={button.text}
             icon={button.icon === "play_icon" ? play_icon : ""}
-            textColor="text-white"
-            customClass="bg-gray-900 hover:bg-gray-800"
+            textColor="text-gray-900 font-semibold"
+            customClass="bg-white hover:bg-emerald-50 shadow-xl"
           />
         </div>
       </div>
 
+      {/* Right — burger image with left-edge blend */}
       <div
-        className="w-1/2 hidden sm:block bg-cover bg-center"
+        className="flex-1 hidden sm:block bg-cover bg-center relative"
         style={{ backgroundImage: `url("${backgroundImage}")` }}
-      ></div>
+      >
+        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#022c22] to-transparent z-10" />
+      </div>
 
-      <div className="absolute left-1/2 top-8 transform -translate-x-1/2 hidden sm:block">
+      {/* Thumbs badge */}
+      <div className="absolute left-1/2 top-8 transform -translate-x-1/2 hidden sm:block z-20">
         <img
           src={thumbs_badge}
           alt="Thumbs Badge"

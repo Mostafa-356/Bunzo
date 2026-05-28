@@ -7,17 +7,17 @@ export default function Newsletter() {
   useAOS({ duration: 500, easing: "ease-out-back" });
   return (
     <section className="flex justify-center items-center pb-20 sm:pb-28">
-      <div className="w-[95%] sm:w-[90%] relative bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center items-center gap-12 rounded-4xl pt-16 pb-20 px-6 shadow-lg border border-emerald-100/60">
+      <div className="w-[95%] sm:w-[90%] relative bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-950 flex flex-col justify-center items-center gap-12 rounded-4xl pt-16 pb-20 px-6 shadow-2xl border border-emerald-700/30">
         <div className="flex flex-col justify-center items-center gap-5 max-w-2xl text-center z-10">
           <Heading
             text="Fresh Egyptian burgers to your inbox"
-            customClass="text-gray-900 text-center"
-            animation="fade-right"
+            customClass="text-white text-center"
+            animation="zoom-in-down"
           />
           <SubHeading
             text="Join the Bunzo family and be the first to know about new Egyptian burger creations, exclusive deals, and authentic Cairo street food stories!"
-            customClass="text-center text-gray-500 leading-relaxed"
-            animation="fade-left"
+            customClass="text-center text-emerald-200/80 leading-relaxed"
+            animation="zoom-in-up"
           />
         </div>
 

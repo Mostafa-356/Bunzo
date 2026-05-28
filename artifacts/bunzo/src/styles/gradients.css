@@ -22,13 +22,13 @@
   background: linear-gradient(160deg, #ffffff 0%, #f0fdf4 40%, #ecfdf5 100%);
 }
 
-/* Category card gradients — richer accent */
-.bg-gradient-category-rice      { background: linear-gradient(160deg, #fff 0%, #f7f8f4 100%); }
-.bg-gradient-category-veggies   { background: linear-gradient(160deg, #fff 0%, #ecfdf5 100%); }
-.bg-gradient-category-beef      { background: linear-gradient(160deg, #fff 0%, #fff1f2 100%); }
-.bg-gradient-category-cake      { background: linear-gradient(160deg, #fff 0%, #fffbeb 100%); }
-.bg-gradient-category-bread     { background: linear-gradient(160deg, #fff 0%, #fafaf9 100%); }
-.bg-gradient-category-chocolate { background: linear-gradient(160deg, #fff 0%, #fdf6ec 100%); }
+/* Category card gradients — rich dark accents */
+.bg-gradient-category-rice      { background: linear-gradient(145deg, #1c1917 0%, #292524 100%); } /* stone dark */
+.bg-gradient-category-veggies   { background: linear-gradient(145deg, #022c22 0%, #064e3b 100%); } /* emerald dark */
+.bg-gradient-category-beef      { background: linear-gradient(145deg, #4c0519 0%, #881337 100%); } /* rose dark */
+.bg-gradient-category-cake      { background: linear-gradient(145deg, #451a03 0%, #7c2d12 100%); } /* orange dark */
+.bg-gradient-category-bread     { background: linear-gradient(145deg, #082f49 0%, #0c4a6e 100%); } /* blue dark */
+.bg-gradient-category-chocolate { background: linear-gradient(145deg, #431407 0%, #78350f 100%); } /* amber dark */
 
 /* Community background */
 .bg-community {

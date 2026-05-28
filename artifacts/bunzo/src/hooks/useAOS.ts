@@ -8,11 +8,12 @@ const useAOS = (options?: AOS.AosOptions) => {
   useEffect(() => {
     if (!_aosInitialized) {
       AOS.init({
-        duration: 750,
+        duration: 700,
         easing: "ease-out-cubic",
         once: true,
-        offset: 50,
+        offset: 60,
         delay: 0,
+        anchorPlacement: "top-bottom",
         ...options,
       });
       _aosInitialized = true;
