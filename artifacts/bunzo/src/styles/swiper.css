@@ -1,0 +1,23 @@
+@import "swiper/css";
+@import "swiper/css/pagination";
+
+:root {
+  --swiper-theme-color: #10b981;
+  --swiper-pagination-bullet-inactive-color: #94a3b8;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+}
+
+.swiper-pagination-bullet {
+  background: var(--swiper-pagination-bullet-inactive-color) !important;
+  opacity: var(--swiper-pagination-bullet-inactive-opacity) !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--swiper-theme-color) !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 5px !important;
+}

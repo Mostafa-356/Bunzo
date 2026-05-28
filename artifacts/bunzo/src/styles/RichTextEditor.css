@@ -1,0 +1,167 @@
+/* Rich Text Editor Custom Styles - Bunzo Brand */
+
+.wrapperClassname {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.toolbarClassname {
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  padding: 8px;
+}
+
+.editorClassname {
+  padding: 16px;
+  min-height: 200px;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+
+/* Custom scrollbar for editor */
+.editorClassname::-webkit-scrollbar {
+  width: 6px;
+}
+
+.editorClassname::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.editorClassname::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 3px;
+}
+
+.editorClassname::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
+/* Toolbar button styles */
+.toolbarClassname .rdw-option-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  margin: 2px;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.toolbarClassname .rdw-option-wrapper:hover {
+  background-color: #10b981;
+  color: white;
+  border-color: #10b981;
+}
+
+.toolbarClassname .rdw-option-active {
+  background-color: #10b981;
+  color: white;
+  border-color: #10b981;
+}
+
+/* Dropdown styles */
+.toolbarClassname .rdw-dropdown-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.toolbarClassname .rdw-dropdown-selectedtext {
+  color: #374151;
+}
+
+.toolbarClassname .rdw-dropdown-carettoopen,
+.toolbarClassname .rdw-dropdown-carettoclose {
+  color: #10b981;
+}
+
+/* Link input styles */
+.rdw-link-modal {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.rdw-link-modal-input {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: "Inter", sans-serif;
+}
+
+.rdw-link-modal-input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.rdw-link-modal-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.rdw-link-modal-btn:hover {
+  background-color: #059669;
+}
+
+/* Image upload styles */
+.rdw-image-modal {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.rdw-image-modal-upload-option {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rdw-image-modal-upload-option:hover {
+  border-color: #10b981;
+  background-color: #f0fdf4;
+}
+
+/* Color picker styles */
+.rdw-colorpicker-modal {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.rdw-colorpicker-option {
+  border-radius: 2px;
+  margin: 1px;
+}
+
+/* Emoji picker styles */
+.rdw-emoji-modal {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove scrollbar from emoji picker */
+.rdw-emoji-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rdw-emoji-modal::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.rdw-emoji-modal::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 3px;
+}
